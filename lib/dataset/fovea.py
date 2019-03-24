@@ -57,7 +57,7 @@ def od_results_one_category_kernel(data_pack):
     return cat_results
 
 
-class od(IMDB):
+class fovea(IMDB):
     def __init__(self, image_set, root_path, data_path, result_path=None, rpn_path=None, mask_size=-1, binary_thresh=None):
         """
         fill basic information to initialize imdb
@@ -65,7 +65,7 @@ class od(IMDB):
         :param root_path: 'data', will write 'rpn_data', 'cache'
         :param data_path: 'data/coco'
         """
-        super(od, self).__init__('OD', image_set, root_path, data_path, result_path, rpn_path)
+        super(fovea, self).__init__('FOVEA', image_set, root_path, data_path, result_path, rpn_path)
         self.root_path = root_path
         self.data_path = data_path
         self.coco = COCO(self._get_ann_file())
