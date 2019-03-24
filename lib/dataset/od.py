@@ -99,7 +99,7 @@ class od(IMDB):
             load_dict = json.load(annfile)
             self.image_paths = {}
             for idx, ann in enumerate(load_dict['images']):
-                self.image_paths[str(ann['id'])] = ann['filename']
+                self.image_paths[str(ann['id'])] = ann['file_name']
 
     def _get_ann_file(self):
         """ self.data_path / annotations / instances_train2014.json """
