@@ -51,7 +51,7 @@ network:
   NMS_TARGET_THRESH: '0.5, 0.6, 0.7, 0.8, 0.9'
 dataset:
   NUM_CLASSES: 81
-  dataset: fovea
+  dataset: unified
   dataset_path: "./data/unified"
   image_set: train2018+val2018
   #image_set: minival2014
