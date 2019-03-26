@@ -1,6 +1,6 @@
 ---
 MXNET_VERSION: "mxnet_v1.1.0"
-output_path: "./output/rcnn/od"
+output_path: "./output/rcnn/unified"
 symbol: resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nms
 gpus: '0'
 CLASS_AGNOSTIC: true
@@ -51,12 +51,12 @@ network:
   NMS_TARGET_THRESH: '0.5, 0.6, 0.7, 0.8, 0.9'
 dataset:
   NUM_CLASSES: 81
-  dataset: od
-  dataset_path: "./data/od"
+  dataset: fovea
+  dataset_path: "./data/unified"
   image_set: train2018+val2018
   #image_set: minival2014
   root_path: "./"
-  test_image_set: test2018
+  test_image_set: minval2018
   proposal: rpn
 TRAIN:
   lr: 0.0005
@@ -156,7 +156,7 @@ TEST:
   NMS: 10.0
   SOFTNMS: true
   test_epoch: 8
-  max_per_image: 1
+  max_per_image: 2
   # Learn nms
   LEARN_NMS: true
   LEARN_NMS_CLASS_SCORE_TH: 0.01

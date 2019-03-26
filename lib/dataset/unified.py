@@ -27,7 +27,7 @@ from bbox.bbox_transform import clip_boxes
 import multiprocessing as mp
 
 
-def fovea_results_one_category_kernel(data_pack):
+def unified_results_one_category_kernel(data_pack):
     cat_id = data_pack['cat_id']
     ann_type = data_pack['ann_type']
     binary_thresh = data_pack['binary_thresh']
@@ -57,7 +57,7 @@ def fovea_results_one_category_kernel(data_pack):
     return cat_results
 
 
-class fovea(IMDB):
+class unified(IMDB):
     def __init__(self, image_set, root_path, data_path, result_path=None, rpn_path=None, mask_size=-1, binary_thresh=None):
         """
         fill basic information to initialize imdb
@@ -65,7 +65,7 @@ class fovea(IMDB):
         :param root_path: 'data', will write 'rpn_data', 'cache'
         :param data_path: 'data/coco'
         """
-        super(fovea, self).__init__('FOVEA', image_set, root_path, data_path, result_path, rpn_path)
+        super(unified, self).__init__('UNIFIED', image_set, root_path, data_path, result_path, rpn_path)
         self.root_path = root_path
         self.data_path = data_path
         self.coco = COCO(self._get_ann_file())
@@ -229,7 +229,7 @@ class fovea(IMDB):
         # results = od_results_one_category_kernel(data_pack[1])
         # print results[0]
         pool = mp.Pool(mp.cpu_count())
-        results = pool.map(fovea_results_one_category_kernel, data_pack)
+        results = pool.map(unified_results_one_category_kernel, data_pack)
         pool.close()
         pool.join()
         results = sum(results, [])
