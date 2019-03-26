@@ -67,7 +67,7 @@ TRAIN:
   warmup_step: 1000
   begin_epoch: 0
   end_epoch: 8
-  model_prefix: 'rcnn_od'
+  model_prefix: 'rcnn_unified'
   # whether resume training
   RESUME: false
   # whether flip image
