@@ -156,7 +156,7 @@ TEST:
   NMS: 10.0
   SOFTNMS: true
   test_epoch: 8
-  max_per_image: 100
+  max_per_image: 1
   # Learn nms
   LEARN_NMS: true
   LEARN_NMS_CLASS_SCORE_TH: 0.01
