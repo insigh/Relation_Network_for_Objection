@@ -69,7 +69,7 @@ TRAIN:
   end_epoch: 8
   model_prefix: 'rcnn_unified'
   # whether resume training
-  RESUME: false
+  RESUME: true
   # whether flip image
   FLIP: true
   # whether shuffle image
