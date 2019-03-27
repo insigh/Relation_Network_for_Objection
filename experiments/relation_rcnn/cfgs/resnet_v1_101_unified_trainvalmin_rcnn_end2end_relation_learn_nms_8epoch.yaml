@@ -39,9 +39,9 @@ network:
   - gamma
   - beta
   ANCHOR_RATIOS:
-  - 0.8
+  - 0.5
   - 1
-  - 1.2
+  - 2.0
   ANCHOR_SCALES:
   - 4
   - 6

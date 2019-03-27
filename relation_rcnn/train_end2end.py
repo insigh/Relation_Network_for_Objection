@@ -94,9 +94,15 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch, lr, 
     logger.info('providing maximum shape'+str(max_data_shape)+"  "+str(max_label_shape))
 
     data_shape_dict = dict(train_data.provide_data_single + train_data.provide_label_single)
+
+    # add by chaojie
+    logger.info("data_sahpe_dict:\n{}".format(pprint.pformat(data_shape_dict)))
+
     pprint.pprint(data_shape_dict)
     sym_instance.infer_shape(data_shape_dict)
     pprint.pprint(sym_instance.arg_shape_dict)
+
+    logger.info("sym_instance.arg_shape_dict\n")
     logging.info(pprint.pformat(sym_instance.arg_shape_dict))
     #dot = mx.viz.plot_network(sym, node_attrs={'shape': 'rect', 'fixedsize': 'false'})
     #dot.render(os.path.join('./output/rcnn/network_vis', config.symbol + '_rcnn'))
