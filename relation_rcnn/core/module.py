@@ -994,8 +994,8 @@ class MutableModule(BaseModule):
         timer = Timer()
         iter = 0
         for epoch in range(begin_epoch, num_epoch):
+            tic = time.time()
             if iter < 80000:
-                iter += 1
                 # tic = time.time()
                 eval_metric.reset()
                 for nbatch, data_batch in enumerate(train_data):
@@ -1016,18 +1016,19 @@ class MutableModule(BaseModule):
                         for callback in _as_list(batch_end_callback):
                             callback(batch_end_params)
                     timer.toc()
-                    print('iter: %d / %d,' % \
-                          (iter, 80000))
-                    print('speed: {:.3f}s / iter'.format(timer.average_time))
+                    if iter%100==0:
+                        print('iter: %d / %d,' % \
+                              (iter, 80000))
+                        print('speed: {:.3f}s / iter'.format(timer.average_time))
 
             # one epoch of training is finished
             for name, val in eval_metric.get_name_value():
                 self.logger.info('Epoch[%d] Train-%s=%f', epoch, name, val)
-            # if iter%9500==0:
-            #     toc = time.time()
-            #     self.logger.info('Epoch[%d] Time cost=%.3f', epoch, (toc-tic))
-            #
-            #     print('Epoch[%d] Time cost=%.3f', epoch, (toc-tic))
+
+                toc = time.time()
+                self.logger.info('Epoch[%d] Time cost=%.3f', epoch, (toc-tic))
+
+                print('Epoch[%d] Time cost=%.3f', epoch, (toc-tic))
 
             # sync aux params across devices
             arg_params, aux_params = self.get_params()
