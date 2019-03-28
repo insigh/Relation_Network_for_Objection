@@ -1016,7 +1016,7 @@ class MutableModule(BaseModule):
                         for callback in _as_list(batch_end_callback):
                             callback(batch_end_params)
                     timer.toc()
-                    if iter%100==0:
+                    if iter%500==0:
                         print('iter: %d / %d,' % \
                               (iter, 80000))
                         print('speed: {:.3f}s / iter'.format(timer.average_time))
