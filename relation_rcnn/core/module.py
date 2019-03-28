@@ -990,7 +990,7 @@ class MutableModule(BaseModule):
         ################################################################################
         # training loop
         ################################################################################
-        from lib.utils.timer import Timer
+        from utils.timer import Timer
         timer = Timer()
         iter = 0
         for epoch in range(begin_epoch, num_epoch):
