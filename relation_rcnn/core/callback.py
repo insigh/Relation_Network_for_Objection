@@ -44,7 +44,7 @@ class Speedometer(object):
                     s = "Iter[%d] Batch [%d]\tSpeed: %.2f samples/sec" % (param.epoch, count, speed)
 
                 logging.info(s)
-                # print(s)
+                print(s)
                 self.tic = time.time()
         else:
             self.init = True
