@@ -44,9 +44,9 @@ network:
   - 2
   ANCHOR_SCALES:
   - 4
+  - 6
   - 8
-  - 16
-  - 32
+  - 10
   NUM_ANCHORS: 12
   NMS_TARGET_THRESH: '0.5, 0.6, 0.7, 0.8, 0.9'
 dataset:
@@ -56,7 +56,7 @@ dataset:
   image_set: train2018+val2018
   #image_set: minival2014
   root_path: "./"
-  test_image_set: minval2018
+  test_image_set: test2018
   proposal: rpn
 TRAIN:
   lr: 0.0005
