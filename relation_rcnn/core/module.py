@@ -328,6 +328,7 @@ class Module(BaseModule):
         self._exec_group.set_params(arg_params, aux_params)
 
         # because we didn't update self._arg_params, they are dirty now.
+        #TODO: why dirty here,what should do next step
         self._params_dirty = True
         self.params_initialized = True
 

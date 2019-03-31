@@ -51,6 +51,7 @@ def _merge_multi_context(outputs, major_axis):
     rets = []
     for tensors, axis in zip(outputs, major_axis):
         if axis >= 0:
+            #TODO: not fully understanding
             rets.append(nd.concatenate(tensors, axis=axis, always_copy=False))
         else:
             # negative axis means the there is no batch_size axis, and all the
