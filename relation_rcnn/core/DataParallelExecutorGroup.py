@@ -137,7 +137,7 @@ class DataParallelExecutorGroup(object):
         # data_shapes = [x if isinstance(x, DataDesc) else DataDesc(*x) for x in data_shapes]
         # if label_shapes is not None:
         #     label_shapes = [x if isinstance(x, DataDesc) else DataDesc(*x) for x in label_shapes]
-
+        #TODO: datashapes[0] is (name, shape)? just only one?
         data_names = [x.name for x in data_shapes[0]]
 
         if isinstance(grad_req, str):
