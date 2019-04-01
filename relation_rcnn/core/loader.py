@@ -590,6 +590,8 @@ class AnchorLoader(mx.io.DataIter):
     def parfetch(self, iroidb):
         # get testing data for multigpu
         data, label = get_rpn_batch(iroidb, self.cfg)
+
+        #data_shape={'data':(1,3,600,600), 'im_info':(600, 600, 5/6)}
         data_shape = {k: v.shape for k, v in data.items()}
         del data_shape['im_info']
         _, feat_shape, _ = self.feat_sym.infer_shape(**data_shape)

@@ -36,11 +36,14 @@ def get_image(roidb, config):
             im = im[:, ::-1, :]
         new_rec = roi_rec.copy()
         scale_ind = random.randrange(len(config.SCALES))
+        # target_size:600 max_size:1000
         target_size = config.SCALES[scale_ind][0]
         max_size = config.SCALES[scale_ind][1]
         im, im_scale = resize(im, target_size, max_size, stride=config.network.IMAGE_STRIDE)
         im_tensor = transform(im, config.network.PIXEL_MEANS)
         processed_ims.append(im_tensor)
+
+        #img_info is like shape:[H, W, 1] for height,width,and im_scale;
         im_info = [im_tensor.shape[2], im_tensor.shape[3], im_scale]
         new_rec['boxes'] = clip_boxes(np.round(roi_rec['boxes'].copy() * im_scale), im_info[:2])
         new_rec['im_info'] = im_info

@@ -45,7 +45,7 @@ def bbox_overlaps_py(boxes, query_boxes):
 def clip_boxes(boxes, im_shape):
     """
     Clip boxes to image boundaries.
-    :param boxes: [N, 4* num_classes]
+    :param boxes: [N, 4* num_classes] TODO: i think the boxes shape is:[N, 4* num_classes] ref:line65 in this code file
     :param im_shape: tuple of 2
     :return: [N, 4* num_classes]
     """

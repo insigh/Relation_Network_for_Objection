@@ -64,6 +64,8 @@ def get_rpn_batch(roidb, cfg):
     if roidb[0]['gt_classes'].size > 0:
         gt_inds = np.where(roidb[0]['gt_classes'] != 0)[0]
         gt_boxes = np.empty((roidb[0]['boxes'].shape[0], 5), dtype=np.float32)
+
+        # TODO if gt_inds<len(roidb[0]) following two lines of code will raise ValueError
         gt_boxes[:, 0:4] = roidb[0]['boxes'][gt_inds, :]
         gt_boxes[:, 4] = roidb[0]['gt_classes'][gt_inds]
     else:
