@@ -34,6 +34,7 @@ class resnet_v1_101_rcnn_base(Symbol):
         conv1_relu = mx.symbol.Activation(name='conv1_relu', data=scale_conv1, act_type='relu')
         pool1 = mx.symbol.Pooling(name='pool1', data=conv1_relu, pooling_convention='full', pad=(0, 0), kernel=(3, 3),
                                   stride=(2, 2), pool_type='max')
+        # pool1:(1,64,56,56)
         res2a_branch1 = mx.symbol.Convolution(name='res2a_branch1', data=pool1, num_filter=256, pad=(0, 0), kernel=(1, 1),
                                               stride=(1, 1), no_bias=True)
         bn2a_branch1 = mx.symbol.BatchNorm(name='bn2a_branch1', data=res2a_branch1, use_global_stats=True, fix_gamma=False, eps=self.eps)
