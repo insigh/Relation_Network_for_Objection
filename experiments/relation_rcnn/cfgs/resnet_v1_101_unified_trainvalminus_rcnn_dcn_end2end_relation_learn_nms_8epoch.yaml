@@ -1,6 +1,6 @@
 ---
 MXNET_VERSION: "mxnet_v1.1.0"
-output_path: "./output/rcnn/unified"
+output_path: "./output/rcnn_dcn/unified"
 symbol: resnet_v1_101_rcnn_dcn_attention_1024_pairwise_position_multi_head_16_learn_nms
 gpus: '0'
 CLASS_AGNOSTIC: true
