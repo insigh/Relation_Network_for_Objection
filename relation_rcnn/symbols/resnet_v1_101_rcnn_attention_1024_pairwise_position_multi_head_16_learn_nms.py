@@ -337,7 +337,7 @@ class resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nm
         #TODO: why is here begin at 1, ignore the first column?
         sliced_rois = mx.sym.slice_axis(rois, axis=1, begin=1, end=None)
         # [num_rois, nongt_dim, 4]
-        #TODO: what does the nongt_dim mean here?
+        # what does the nongt_dim mean here? ---> cfg.TRAIN.RPN_POST_NMS_TOP_N = 300 here
         position_matrix = self.extract_position_matrix(sliced_rois, nongt_dim=nongt_dim)
         # [num_rois, nongt_dim, 64]
         position_embedding = self.extract_position_embedding(position_matrix, feat_dim=64)
@@ -353,6 +353,8 @@ class resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nm
         fc_all_1_relu = mx.sym.Activation(data=fc_all_1, act_type='relu', name='fc_all_1_relu')
 
         fc_new_2 = mx.symbol.FullyConnected(name='fc_new_2', data=fc_all_1_relu, num_hidden=1024)
+
+        # nongt_dim is a intermediate variable
         attention_2 = self.attention_module_multi_head(fc_new_2, position_embedding,
                                                        nongt_dim=nongt_dim, fc_dim=16, feat_dim=1024,
                                                        index=2, group=16,
