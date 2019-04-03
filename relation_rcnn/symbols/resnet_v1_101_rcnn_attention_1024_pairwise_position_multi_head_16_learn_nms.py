@@ -334,8 +334,10 @@ class resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nm
 
         roi_pool = mx.symbol.ROIPooling(
             name='roi_pool', data=conv_new_1_relu, rois=rois, pooled_size=(7, 7), spatial_scale=0.0625)
+        #TODO: why is here begin at 1, ignore the first column?
         sliced_rois = mx.sym.slice_axis(rois, axis=1, begin=1, end=None)
         # [num_rois, nongt_dim, 4]
+        #TODO: what does the nongt_dim mean here?
         position_matrix = self.extract_position_matrix(sliced_rois, nongt_dim=nongt_dim)
         # [num_rois, nongt_dim, 64]
         position_embedding = self.extract_position_embedding(position_matrix, feat_dim=64)
