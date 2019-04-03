@@ -60,12 +60,12 @@ class resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nm
         """
         xmin, ymin, xmax, ymax = mx.sym.split(data=bbox,
                                               num_outputs=4, axis=1)
-        # [num_fg_classes, num_boxes, 1]
+
         bbox_width = xmax - xmin + 1.
         bbox_height = ymax - ymin + 1.
         center_x = 0.5 * (xmin + xmax)
         center_y = 0.5 * (ymin + ymax)
-        # [num_fg_classes, num_boxes, num_boxes]
+
         delta_x = mx.sym.broadcast_minus(lhs=center_x,
                                          rhs=mx.sym.transpose(center_x))
         delta_x = mx.sym.broadcast_div(delta_x, bbox_width)
