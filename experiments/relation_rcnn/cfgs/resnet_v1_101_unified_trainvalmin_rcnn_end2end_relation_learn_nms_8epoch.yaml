@@ -51,7 +51,7 @@ network:
   - 9
   - 10
   NUM_ANCHORS: 21
-  NMS_TARGET_THRESH: '0.5, 0.6, 0.7, 0.8, 0.9'
+  NMS_TARGET_THRESH: '0.8, 0.9'
 dataset:
   NUM_CLASSES: 3
   dataset: unified
