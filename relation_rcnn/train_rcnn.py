@@ -55,6 +55,14 @@ def main():
     logger, output_path = create_logger(config.output_path, args.cfg, config.dataset.image_set)
     shutil.copy2(os.path.join(curr_path, 'symbols', config.symbol + '.py'), output_path)
 
+    prefix_rpn = os.path.join(output_path, config.TRAIN.model_prefix+'rpn')
+    train_rpn(cfg=config, dataset=config.dataset.dataset, image_set=config.dataset.image_set,
+              root_path=config.dataset.root_path, frequent=args.frequent, kvstore=config.default.kvstore, flip=config.TRAIN.FLIP,
+              shuffle=config.TRAIN.SHUFFLE, resume=config.TRAIN.RESUME, ctx=ctx, pretrained=config.network.pretrained, epoch=config.network.pretrained_epoch,
+              prefix=prefix_rpn, begin_epoch=config.TRAIN.begin_epoch, end_epoch=config.TRAIN.end_epoch, train_shared=False,
+              lr=config.TRAIN.lr, lr_step=config.TRAIN.lr_step, logger=logger, output_path=output_path
+               )
+
     assert config.TRAIN.END2END == False
     prefix = os.path.join(output_path, config.TRAIN.model_prefix)
     logging.info('########## TRAIN rcnn WITH IMAGENET INIT AND RPN DETECTION')
@@ -65,4 +73,5 @@ def main():
                proposal=config.dataset.proposal, logger=logger, output_path=output_path)
 
 if __name__ == '__main__':
+
     main()
