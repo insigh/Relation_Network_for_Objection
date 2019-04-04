@@ -179,9 +179,9 @@ import shutil
 import numpy as np
 import mxnet as mx
 
-from function.train_rpn import train_rpn
-from function.test_rpn import test_rpn
-from function.train_rcnn import train_rcnn
+# from function.train_rpn import train_rpn
+# from function.test_rpn import test_rpn
+# from function.train_rcnn import train_rcnn
 from utils.create_logger import create_logger
 
 
