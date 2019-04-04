@@ -194,13 +194,13 @@ def main():
     assert config.TRAIN.END2END == False
     prefix = os.path.join(output_path, config.TRAIN.model_prefix)
     logging.info('########## TRAIN rcnn WITH IMAGENET INIT AND RPN DETECTION')
-    train_rpn(config, config.dataset.dataset, config.dataset.image_set, config.dataset.root_path, config.dataset.dataset_path,
-               args.frequent, config.default.kvstore, config.TRAIN.FLIP, config.TRAIN.SHUFFLE, config.TRAIN.RESUME,
-               ctx, config.network.pretrained, config.network.pretrained_epoch, prefix, config.TRAIN.begin_epoch,
-               config.TRAIN.end_epoch, train_shared=False, lr=config.TRAIN.lr, lr_step=config.TRAIN.lr_step,
-               logger=logger, output_path=output_path)
+    # train_rpn(config, config.dataset.dataset, config.dataset.image_set, config.dataset.root_path, config.dataset.dataset_path,
+    #            args.frequent, config.default.kvstore, config.TRAIN.FLIP, config.TRAIN.SHUFFLE, config.TRAIN.RESUME,
+    #            ctx, config.network.pretrained, config.network.pretrained_epoch, prefix, config.TRAIN.begin_epoch,
+    #            config.TRAIN.end_epoch, train_shared=False, lr=config.TRAIN.lr, lr_step=config.TRAIN.lr_step,
+    #            logger=logger, output_path=output_path)
     test_rpn(cfg=config, dataset=config.dataset.dataset, image_set=config.dataset.image_set,
-             root_path=config.dataset.root_pat, dataset_path=config.dataset.dataset_path,
+             root_path=config.dataset.root_path, dataset_path=config.dataset.dataset_path,
              ctx=ctx, prefix=prefix, epoch=config.TRAIN.end_epoch,
              vis=False, shuffle=False, thresh=1e-3)
 
