@@ -47,6 +47,9 @@ from symbols import *
 from core import callback, metric
 from core.loader import AnchorLoader
 from core.module import MutableModule
+
+from core.tester import generate_proposals
+
 from utils.create_logger import create_logger
 from utils.load_data import load_gt_roidb, merge_roidb, filter_roidb
 from utils.load_model import load_param
@@ -185,6 +188,7 @@ def train_net(args, ctx, pretrained, epoch, prefix, begin_epoch, end_epoch, lr, 
             optimizer='sgd', optimizer_params=optimizer_params,
             arg_params=arg_params, aux_params=aux_params, begin_epoch=begin_epoch, num_epoch=end_epoch)
 
+    generate_proposals()
 
 def main():
     print('Called with argument:', args)

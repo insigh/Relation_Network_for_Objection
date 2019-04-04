@@ -49,8 +49,12 @@ def im_proposal(predictor, data_batch, data_names, scales):
 
     for output, data_dict, scale in zip(output_all, data_dict_all, scales):
         # drop the batch index
-        boxes = output['rois_output'].asnumpy()[:, 1:]
-        scores = output['rois_score'].asnumpy()
+        try:
+            boxes = output['rois_output'].asnumpy()[:, 1:]
+            scores = output['rois_score'].asnumpy()
+        except Exception as e:
+            print output
+
 
         # transform to original scale
         boxes = boxes / scale
