@@ -74,7 +74,7 @@ config.TRAIN.nms_loss_scale = 1.0
 config.TRAIN.nms_pos_scale = 4.0
 
 config.TRAIN.ALTERNATE = edict()
-config.TRAIN.ALTERNATE.RPN_BATCH_IMAGES = 0
+config.TRAIN.ALTERNATE.RPN_BATCH_IMAGES = 1
 config.TRAIN.FC_DROPOUT_RATIO = 0
 config.TRAIN.ATTENTION_DROPOUT_RATIO = 0
 config.TRAIN.ATTENTION_SCALE_METHOD = 0
