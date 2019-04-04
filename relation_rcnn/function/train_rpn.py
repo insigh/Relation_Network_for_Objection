@@ -16,7 +16,7 @@ import logging
 import pprint
 import mxnet as mx
 
-import _init_paths
+
 
 import time
 import argparse
