@@ -504,7 +504,10 @@ class AnchorLoader(mx.io.DataIter):
                 horz_inds = np.where(horz)[0]
                 vert_inds = np.where(vert)[0]
                 inds = np.hstack((np.random.permutation(horz_inds), np.random.permutation(vert_inds)))
-                extra = inds.shape[0] % self.batch_size
+                try:
+                    extra = inds.shape[0] % self.batch_size
+                except Exception as e:
+                    print self.batch_size
                 inds_ = np.reshape(inds[:-extra], (-1, self.batch_size))
                 row_perm = np.random.permutation(np.arange(inds_.shape[0]))
                 inds[:-extra] = np.reshape(inds_[row_perm, :], (-1,))
