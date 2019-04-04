@@ -272,7 +272,7 @@ class Module(BaseModule):
                         try:
                             cache_arr.copyto(arr)
                         except Exception as e:
-                            print ('Error:', name, cache.shape, arr.shape)
+                            print ('Error:', name, cache_arr, arr.shape)
                 else:
                     if not allow_missing:
                         raise RuntimeError("%s is not presented" % name)
