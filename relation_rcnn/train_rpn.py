@@ -180,7 +180,7 @@ import numpy as np
 import mxnet as mx
 
 # from function.train_rpn import train_rpn
-# from function.test_rpn import test_rpn
+from function.test_rpn import test_rpn
 # from function.train_rcnn import train_rcnn
 from utils.create_logger import create_logger
 
@@ -199,6 +199,10 @@ def main():
                ctx, config.network.pretrained, config.network.pretrained_epoch, prefix, config.TRAIN.begin_epoch,
                config.TRAIN.end_epoch, train_shared=False, lr=config.TRAIN.lr, lr_step=config.TRAIN.lr_step,
                logger=logger, output_path=output_path)
+    test_rpn(cfg=config, dataset=config.dataset.dataset, image_set=config.dataset.image_set,
+             root_path=config.dataset.root_pat, dataset_path=config.dataset.dataset_path,
+             ctx=ctx, prefix=prefix, epoch=config.TRAIN.end_epoch,
+             vis=False, shuffle=False, thresh=1e-3)
 
 if __name__ == '__main__':
     main()
