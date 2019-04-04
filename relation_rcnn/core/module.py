@@ -269,7 +269,10 @@ class Module(BaseModule):
 
                     # just in case the cached array is just the target itself
                     if cache_arr is not arr:
-                        cache_arr.copyto(arr)
+                        try:
+                            cache_arr.copyto(arr)
+                        except Exception as e:
+                            print ('Error:', name, cache.shape, arr.shape)
                 else:
                     if not allow_missing:
                         raise RuntimeError("%s is not presented" % name)
