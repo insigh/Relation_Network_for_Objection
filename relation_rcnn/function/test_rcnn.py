@@ -22,7 +22,7 @@ import mxnet as mx
 from symbols import *
 from dataset import *
 from core.loader import TestLoader
-from core.tester import Predictor, pred_eval
+from core.tester import Predictor, pred_eval, generate_proposals
 from utils.load_model import load_param
 
 
@@ -89,7 +89,7 @@ def test_rcnn(cfg, dataset, image_set, root_path, dataset_path,
                           context=ctx, max_data_shapes=max_data_shape,
                           provide_data=test_data.provide_data, provide_label=test_data.provide_label,
                           arg_params=arg_params, aux_params=aux_params)
-
+    generate_proposals(predictor, test_data, imdb, cfg)
     # start detection
     pred_eval(predictor, test_data, imdb, cfg, vis=vis, ignore_cache=ignore_cache, thresh=thresh, logger=logger)
 
