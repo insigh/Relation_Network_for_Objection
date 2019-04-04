@@ -1256,8 +1256,14 @@ class resnet_v1_101_rcnn_dcn_attention_1024_pairwise_position_multi_head_16_lear
             nms_key_1_bias = mx.sym.var('nms_key_1_bias', shape=(1024,), dtype=np.float32)
             nms_linear_out_1_weight = mx.sym.var('nms_linear_out_1_weight', shape=(128, 128, 1, 1), dtype=np.float32)
             nms_linear_out_1_bias = mx.sym.var('nms_linear_out_1_bias', shape=(128,), dtype=np.float32)
-            nms_logit_weight = mx.sym.var('nms_logit_weight', shape=(5, 128), dtype=np.float32)
-            nms_logit_bias = mx.sym.var('nms_logit_bias', shape=(5,), dtype=np.float32)
+
+            # for less arguments for learn_nms
+            nms_logit_weight = mx.sym.var('nms_logit_weight',
+                                          shape=(len(cfg.network.NMS_TARGET_THRESH.split(',')), 128), dtype=np.float32)
+            nms_logit_bias = mx.sym.var('nms_logit_bias', shape=(len(cfg.network.NMS_TARGET_THRESH.split(',')),),
+                                        dtype=np.float32)
+            # nms_logit_weight = mx.sym.var('nms_logit_weight', shape=(5, 128), dtype=np.float32)
+            # nms_logit_bias = mx.sym.var('nms_logit_bias', shape=(5,), dtype=np.float32)
 
             nms_multi_score, sorted_bbox, sorted_score = mx.sym.Custom(cls_score=cls_score, bbox_pred=bbox_pred,
                 rois=rois, im_info=im_info, nms_rank_weight=nms_rank_weight, fc_all_2_relu=fc_all_2_relu,
