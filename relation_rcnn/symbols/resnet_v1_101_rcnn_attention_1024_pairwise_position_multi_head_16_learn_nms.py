@@ -518,8 +518,8 @@ class resnet_v1_101_rcnn_attention_1024_pairwise_position_multi_head_16_learn_nm
             nms_linear_out_1_bias = mx.sym.var('nms_linear_out_1_bias', shape=(128,), dtype=np.float32)
 
             # for less arguments for learn_nms
-            nms_logit_weight = mx.sym.var('nms_logit_weight', shape=(2, 128), dtype=np.float32)
-            nms_logit_bias = mx.sym.var('nms_logit_bias', shape=(2,), dtype=np.float32)
+            nms_logit_weight = mx.sym.var('nms_logit_weight', shape=(len(cfg.network.NMS_TARGET_THRESH), 128), dtype=np.float32)
+            nms_logit_bias = mx.sym.var('nms_logit_bias', shape=(len(cfg.network.NMS_TARGET_THRESH),), dtype=np.float32)
 
             nms_multi_score, sorted_bbox, sorted_score = mx.sym.Custom(cls_score=cls_score, bbox_pred=bbox_pred,
                 rois=rois, im_info=im_info, nms_rank_weight=nms_rank_weight, fc_all_2_relu=fc_all_2_relu, 
