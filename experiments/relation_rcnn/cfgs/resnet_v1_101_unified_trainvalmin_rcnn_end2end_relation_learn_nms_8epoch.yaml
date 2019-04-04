@@ -41,7 +41,7 @@ network:
   ANCHOR_RATIOS:
   - 0.5
   - 1
-  - 1.5
+  - 2.0
   ANCHOR_SCALES:
   - 4
   - 5
