@@ -16,6 +16,16 @@ import logging
 import pprint
 import mxnet as mx
 
+import _init_paths
+
+import time
+import argparse
+import logging
+import pprint
+import os
+import sys
+from config.config import config, update_config
+
 from symbols import *
 from core import callback, metric
 from core.loader import AnchorLoader
@@ -134,15 +144,7 @@ def train_rpn(cfg, dataset, image_set, root_path, dataset_path,
             optimizer='sgd', optimizer_params=optimizer_params,
             arg_params=arg_params, aux_params=aux_params, begin_epoch=begin_epoch, num_epoch=end_epoch)
 
-import _init_paths
 
-import time
-import argparse
-import logging
-import pprint
-import os
-import sys
-from config.config import config, update_config
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train Faster-RCNN network')
