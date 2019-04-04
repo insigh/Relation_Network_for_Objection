@@ -52,7 +52,7 @@ network:
   USE_NONGT_INDEX: false
 dataset:
   NUM_CLASSES: 3
-  dataset: coco
+  dataset: unified
   dataset_path: "./data/unified"
   image_set: train2018+val2018
 #  image_set: minival2014
