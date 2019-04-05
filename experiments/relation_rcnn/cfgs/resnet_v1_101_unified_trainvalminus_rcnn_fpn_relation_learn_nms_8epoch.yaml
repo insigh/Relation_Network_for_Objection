@@ -60,7 +60,7 @@ dataset:
   root_path: "./"
   test_image_set: minval2018
   proposal: rpn
-  proposal_cache: "./cache/rpn_data"
+  proposal_cache: "./cache"
 TRAIN:
   lr: 0.00125
   lr_step: '5.33'
