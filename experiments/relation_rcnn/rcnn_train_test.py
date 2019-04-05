@@ -21,7 +21,7 @@ import train_rcnn
 import test
 
 if __name__ == "__main__":
-    train_rcnn.main()
+    # train_rcnn.main()
     test.main()
 
 
