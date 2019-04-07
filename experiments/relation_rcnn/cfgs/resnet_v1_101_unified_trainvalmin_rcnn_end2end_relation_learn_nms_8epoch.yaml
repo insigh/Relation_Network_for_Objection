@@ -44,9 +44,9 @@ network:
   - 2.0
   ANCHOR_SCALES:
   - 4
+  - 6
   - 8
-  - 16
-  - 32
+  - 10
   NUM_ANCHORS: 12
   NMS_TARGET_THRESH: '0.5, 0.6, 0.7, 0.8, 0.9'
 dataset:
